@@ -9,7 +9,7 @@ class ProdutosDAO:
     def addProd(self, data: dict):
         try:
             self.__conn.save(data)
-            return "product adicionado"
+            return "Produto adicionado"
         except Exception as e:
             raise print("Erro ao adicionar product")
 

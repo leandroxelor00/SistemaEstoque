@@ -36,8 +36,8 @@ class EmployeeDAO:
 if __name__ == '__main__':
     f = EmployeeDAO()
     f.addFunc({
-        "idFunc": 3,
-        "nome": "Daniela"
+        "idFunc": 1,
+        "nome": "dan"
     })
 
     f.deleteFunc(2)
