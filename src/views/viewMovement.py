@@ -1,45 +1,56 @@
+from flet import *
 
-from flet import ResponsiveRow, Column, Container, View, Button,TextField,DataRow,DataCell,DataTable,DataColumn,Padding,Border,MainAxisAlignment,Text
-
-
-class ViewMovement(View):
+class ViewMovimento(View):
 
     def __init__(self):
         super().__init__()
-        self.searchBar = TextField(label="Pesquisar por ID",col=7)
-        self.btnSearch=Button("Procurar", col=3)
-        self.route = ("/search")
+        self.tipo=Dropdown(label="Tipo de Movimento", width=250, height=50,
+                           options=[dropdown.Option("Entrada"),
+                                    dropdown.Option("Saída")],col=4)
+        self.idProd=TextField(label="idProd",col=3)
+        self.quantidade=TextField(label="Quantidade",col=4)
+        self.idFornecedor=TextField(label="idFornecedor",col=4)
+        self.idFuncionario=TextField(label="idFuncionario",col=3)
+        self.btnCadastrarMovimento=Button("Add Movimento",icon=CupertinoIcons.PLUS,col=4,width=100,margin=Margin(0,10,0,0))
+        self.route = "/movimentos"
 
-        self.tabelaProduto = DataTable(
+
+
+        self.tabelaMovimentos = DataTable(
             columns=[
-                DataColumn(label=Text("IdMovimento")),
-                DataColumn(label=Text("IdProd")),
+                DataColumn(label=Text("idMovimento")),
+                DataColumn(label=Text("idProd")),
                 DataColumn(label=Text("Quantidade")),
-                DataColumn(label=Text("Fornecedor")),
-                DataColumn(label=Text("Funcionario")),
+                DataColumn(label=Text("idFornecedor")),
+                DataColumn(label=Text("idFuncionario")),
                 DataColumn(label=Text("Tipo")),
             ],
             col=12
         )
 
-
     def build(self):
-        modalBarra = Container(
-            content=ResponsiveRow(controls=[self.searchBar, self.btnSearch], alignment=MainAxisAlignment.SPACE_BETWEEN),
-            padding=Padding(10, 20, 10, 20),
+        modalMovimento=Container(
+            content=Column(
+                controls=[
+                    ResponsiveRow(controls=[self.idProd,self.quantidade, self.tipo], alignment=MainAxisAlignment.SPACE_AROUND),
+                    ResponsiveRow(controls=[self.idFuncionario, self.idFornecedor, self.btnCadastrarMovimento], alignment=MainAxisAlignment.SPACE_AROUND)
+                ]
+            ),border=Border.all(2,"Black"),height=150,padding=15,
+            col=12
+        )
+
+        modalTabela=Container(
+            content=ResponsiveRow(controls=[self.tabelaMovimentos],alignment=MainAxisAlignment.SPACE_BETWEEN),
+            padding=Padding(10,20,10,20),
             border=Border.all(2, "Black"),
         )
 
-        modalTabela = Container(
-            content=ResponsiveRow(controls=[self.tabelaProduto], alignment=MainAxisAlignment.SPACE_BETWEEN),
-            padding=Padding(10, 20, 10, 20),
-            border=Border.all(2, "Black"),
-        )
+        self.controls=[Column(
+            controls=[modalMovimento,modalTabela]
 
-        self.controls = [Column(
-            controls=[modalBarra,modalTabela]
-
-            )
-        ]
+                    )
+            ]
 
         return self.controls
+
+
