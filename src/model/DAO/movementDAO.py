@@ -1,4 +1,5 @@
 from src.model.DAO.baseDB import BaseDB
+from src.model.entities.movement import Movimentacao
 from src.infrastructure.services.idGen import GeradorID
 from src.model.DAO.stockDAO import EstoqueDAO
 
@@ -15,7 +16,8 @@ class MovimentoDAO:
                 "idProd": idProduto,
                 "quantidade": quantidade,
                 "idFornecedor": idFornecedor,
-                "tipo": "Entrada"
+                "idFunc": "",
+                "tipo": "Entrada",
             }
             self.__conn.save(data)
 
@@ -26,7 +28,7 @@ class MovimentoDAO:
 
             return "Movimento adicionado"
         except Exception as e:
-            raise ValueError("Erro ao adicionar o movimento no db: ", self.__conn, e)
+            raise ValueError("Erro ao adicionar o movimento no db: ", e)
 
     def addMovimentoSaida(self, idProduto, quantidade, idFuncionario):
         try:
@@ -35,7 +37,8 @@ class MovimentoDAO:
                 "idProd": idProduto,
                 "quantidade": quantidade,
                 "idFunc": idFuncionario,
-                "tipo": "Saída"
+                "idFornecedor": "",
+                "tipo": "Saída",
             }
             self.__conn.save(data)
 
@@ -46,7 +49,7 @@ class MovimentoDAO:
 
             return "Movimento adicionado"
         except Exception as e:
-            raise ValueError("Erro ao adicionar o movimento no db: ", self.__conn, e)
+            raise ValueError("Erro ao adicionar o movimento no db: ", e)
 
     def viewList(self):
         return self.__conn.listData()

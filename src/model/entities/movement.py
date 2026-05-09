@@ -2,33 +2,37 @@ from datetime import datetime as dt
 
 class Movimentacao:
 
-    def __init__(self,idFuncionario:int,dataMov:dt=dt.today()):
-        self.__idMovimento = None
-        self.__dataMov = dataMov
-        self.__idFuncionario = idFuncionario
-        self.__idProd = None
-        self.__numeroSala = None
-        self.__quantidade = None
+    def __init__(self,idMovimento:int,idProd:int,quantidade:int,idFunc:int,idFornecedor:int,tipo:str):
+        self.__idMovimento = idMovimento
+        self.__idProd = idProd
+        self.__quantidade = quantidade
+        self.__idFunc = idFunc
+        self.__idFornecedor = idFornecedor
+        self.__tipo = tipo
 
     @property
     def idMov(self):
         return self.__idMovimento
 
-    def entrarEstoque(self,idProd:int,quantidade:int):
-        self.__idProd = idProd
-        self.__quantidade = quantidade
+    @property
+    def dataMov(self):
+        return self.__dataMov
 
-    def saidaEstoque(self,idProd:int,quantidade:int,numeroSala:int):
-        self.__idProd = idProd
-        self.__quantidade = quantidade
-        self.__numeroSala = numeroSala
+    # def entrarEstoque(self,idProd:int,quantidade:int):
+    #     self.__idProd = idProd
+    #     self.__quantidade = quantidade
+    #
+    # def saidaEstoque(self,idProd:int,quantidade:int,numeroSala:int):
+    #     self.__idProd = idProd
+    #     self.__quantidade = quantidade
+    #     self.__numeroSala = numeroSala
 
     def movimento(self):
         return {
             "idMovimento": self.__idMovimento,
-            "dataMovimento": self.__dataMov,
-            "idFunc": self.__idFuncionario,
             "idProd": self.__idProd,
-            "numeroSala": self.__numeroSala,
-            "quantidade": self.__quantidade
+            "quantidade": self.__quantidade,
+            "idFunc": self.__idFunc,
+            "idFornecedor": self.__idFornecedor,
+            "tipo": self.__tipo,
         }

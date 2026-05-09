@@ -21,8 +21,8 @@ class ViewMovimento(View):
                 DataColumn(label=Text("idMovimento")),
                 DataColumn(label=Text("idProd")),
                 DataColumn(label=Text("Quantidade")),
-                DataColumn(label=Text("idFornecedor")),
                 DataColumn(label=Text("idFuncionario")),
+                DataColumn(label=Text("idFornecedor")),
                 DataColumn(label=Text("Tipo")),
             ],
             col=12

@@ -1,25 +1,34 @@
 [
     {
         "idMovimento": 1,
-        "nome": "dan"
+        "idProd": 5,
+        "quantidade": 10,
+        "idFunc": 1,
+        "idFornecedor": "",
+        "tipo": "Saída"
     },
     {
         "idMovimento": 2,
         "idProd": 5,
-        "quantidade": 10,
-        "idFornecedor": 1
+        "quantidade": 5,
+        "idFornecedor": 1,
+        "idFunc": "",
+        "tipo": "Entrada"
     },
     {
         "idMovimento": 3,
         "idProd": 5,
-        "quantidade": 5,
-        "idFunc": 1
+        "quantidade": 10,
+        "idFornecedor": 1,
+        "idFunc": "",
+        "tipo": "Entrada"
     },
     {
         "idMovimento": 4,
         "idProd": 5,
-        "quantidade": 10,
+        "quantidade": 19,
         "idFunc": 1,
+        "idFornecedor": "",
         "tipo": "Saída"
     }
 ]
