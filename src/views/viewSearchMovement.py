@@ -2,7 +2,7 @@
 from flet import ResponsiveRow, Column, Container, View, Button,TextField,DataRow,DataCell,DataTable,DataColumn,Padding,Border,MainAxisAlignment,Text
 
 
-class ViewShowProduct(View):
+class ViewSearchMovement(View):
 
     def __init__(self):
         super().__init__()
@@ -12,10 +12,12 @@ class ViewShowProduct(View):
 
         self.tabelaProduto = DataTable(
             columns=[
+                DataColumn(label=Text("IdMovimento")),
                 DataColumn(label=Text("IdProd")),
-                DataColumn(label=Text("Nome")),
-                DataColumn(label=Text("Marca")),
-                DataColumn(label=Text("Valor R$")),
+                DataColumn(label=Text("Quantidade")),
+                DataColumn(label=Text("Fornecedor")),
+                DataColumn(label=Text("Funcionario")),
+                DataColumn(label=Text("Tipo")),
             ],
             col=12
         )

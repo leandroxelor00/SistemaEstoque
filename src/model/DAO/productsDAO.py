@@ -33,7 +33,7 @@ class ProdutosDAO:
             raise ValueError("Produto não encontrado por esse ID")
 
 # if __name__ == '__main__':
-    # p = ProdutosDAO()
+#     p = ProdutosDAO()
     # prod = {
     #         "idProd": 1,
     #         "nome": "dada",
@@ -41,7 +41,8 @@ class ProdutosDAO:
     #     }
     # p.addProd(prod)
 
-    # print(p.searchById(1))
+    # for i in p.viewList():
+    #     print(str(i["idProd"]))
 
     # try:
     #     for i in p.viewList():

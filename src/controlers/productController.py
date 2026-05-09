@@ -28,12 +28,6 @@ class ProdutoController:
         self.page.update()
 
 
-    def buscarProdutoID(self,id:int):
-        try:
-            return self.dao.searchById(id)
-        except:
-            print("sei la, deu erro ao procurar, deve ser isso, pelo ID")
-
     def handleAddProd(self):
         print("Entrou no handleAddProd")
         p = Produto(GeradorID("products.json", "idProd").idGerado, self.tela.nomeProd.value, self.tela.marcaProd.value, self.tela.valorProd.value)
