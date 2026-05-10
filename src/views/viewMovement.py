@@ -1,4 +1,5 @@
 from flet import *
+from src.model.DAO.employeeDAO import EmployeeDAO
 
 class ViewMovimento(View):
 
@@ -7,6 +8,8 @@ class ViewMovimento(View):
         self.tipo=Dropdown(label="Tipo de Movimento", width=250, height=50,
                            options=[dropdown.Option("Entrada"),
                                     dropdown.Option("Saída")],col=4)
+        self.selectFunc = Dropdown(label="Funcionario", width=250, height=50,col=4)
+
         self.idProd=TextField(label="idProd",col=3)
         self.quantidade=TextField(label="Quantidade",col=4)
         self.idFornecedor=TextField(label="idFornecedor",col=4)
@@ -28,11 +31,12 @@ class ViewMovimento(View):
             col=12
         )
 
+
     def build(self):
         modalMovimento=Container(
             content=Column(
                 controls=[
-                    ResponsiveRow(controls=[self.idProd,self.quantidade, self.tipo], alignment=MainAxisAlignment.SPACE_AROUND),
+                    ResponsiveRow(controls=[self.idProd,self.quantidade, self.selectFunc], alignment=MainAxisAlignment.SPACE_AROUND),
                     ResponsiveRow(controls=[self.idFuncionario, self.idFornecedor, self.btnCadastrarMovimento], alignment=MainAxisAlignment.SPACE_AROUND)
                 ]
             ),border=Border.all(2,"Black"),height=150,padding=15,

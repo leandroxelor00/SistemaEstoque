@@ -2,6 +2,7 @@ from src.infrastructure.services.idGen import GeradorID
 from src.model.entities.movement import Movimentacao
 from src.model.DAO.movementDAO import MovimentoDAO
 from src.views.viewMovement import ViewMovimento
+from src.model.DAO.employeeDAO import EmployeeDAO
 from flet import *
 
 class MovementController:
@@ -12,6 +13,9 @@ class MovementController:
         tela.btnCadastrarMovimento.on_click=self.handleAddMov
         self.tela = tela
         self.listarProdutos()
+        self.addDropdownOptions()
+
+
 
     def listarProdutos(self):
         self.tela.tabelaMovimentos.rows.clear()
@@ -51,3 +55,11 @@ class MovementController:
             self.listarProdutos()
         except Exception as e:
             print(e)
+
+    def addDropdownOptions(self):
+        e = EmployeeDAO()
+        lista = []
+        for i in e.viewList():
+            lista.append(dropdown.Option(text=i["nome"]))
+
+        self.tela.selectFunc.options = lista

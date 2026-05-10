@@ -2,25 +2,18 @@ from flet import *
 
 def app(page):
 
-    def onClick():
-        texto2.value = selecionar.value
+    selectFunc = Dropdown(label="Fornecedor", width=250, height=50)
 
-    btn = Button("Printar o valor do campo",on_click=onClick)
-    selecionar = Dropdown(label="Tipo de Movimento", width=150, height=50,
-                    options=[dropdown.Option("Entrada"),
-                             dropdown.Option("Saída")])
-    texto = Text("Valor: ")
-    texto2 = Text("")
-    linha = ResponsiveRow(controls=[texto,texto2])
+    lista = [{"id": 1, "nome": "Dani"},
+             {"id": 2, "nome": "Mari"}]
 
+    listaNomes = []
 
+    for i in lista:
+        listaNomes.append(dropdown.Option(text=i["nome"]))
 
-    page.add(selecionar,btn,linha)
+    selectFunc.options = listaNomes
+    page.add(selectFunc)
 
 if __name__ == '__main__':
     run(app)
-
-
-
-
-
