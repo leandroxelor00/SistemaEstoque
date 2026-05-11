@@ -1,19 +1,20 @@
+from logging import disable
+
 from flet import *
 
 def app(page):
 
-    selectFunc = Dropdown(label="Fornecedor", width=250, height=50)
+    texto1 = TextField(label="Sei la")
+    texto2 = TextField(label="Texto disabled")
 
-    lista = [{"id": 1, "nome": "Dani"},
-             {"id": 2, "nome": "Mari"}]
+    def teste():
+        if texto1.value.upper() == "DISABLED":
+            texto2.disabled=True
+        else:
+            texto2.disabled=False
 
-    listaNomes = []
 
-    for i in lista:
-        listaNomes.append(dropdown.Option(text=i["nome"]))
-
-    selectFunc.options = listaNomes
-    page.add(selectFunc)
-
+    texto1.on_change = teste
+    page.add(texto1, texto2)
 if __name__ == '__main__':
     run(app)

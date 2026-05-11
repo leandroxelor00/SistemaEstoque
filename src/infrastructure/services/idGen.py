@@ -5,7 +5,8 @@ from json import JSONDecodeError
 class GeradorID:
 
     def __init__(self,path,atributo):
-        self.path = fr"E:\Aulas\SistemaEstoque\src\infrastructure\database\{path}"
+        # self.path = fr"E:\Aulas\SistemaEstoque\src\infrastructure\database\{path}"
+        self.path = fr"C:\Users\leandro.ccmata\Documents\GitHub\SistemaEstoque\src\infrastructure\database\{path}"
         self.idGerado = None
         try:
             with open(self.path,"r",encoding="utf-8") as file:

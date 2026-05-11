@@ -1,32 +1,16 @@
 [
     {
         "idMovimento": 1,
-        "idProd": 5,
-        "quantidade": 10,
-        "idFunc": 1,
-        "idFornecedor": "",
-        "tipo": "Saída"
+        "idProd": 1,
+        "quantidade": 1,
+        "idFornecedor": 1,
+        "idFunc": "",
+        "tipo": "Entrada"
     },
     {
         "idMovimento": 2,
-        "idProd": 5,
-        "quantidade": 5,
-        "idFornecedor": 1,
-        "idFunc": "",
-        "tipo": "Entrada"
-    },
-    {
-        "idMovimento": 3,
-        "idProd": 5,
-        "quantidade": 10,
-        "idFornecedor": 1,
-        "idFunc": "",
-        "tipo": "Entrada"
-    },
-    {
-        "idMovimento": 4,
-        "idProd": 5,
-        "quantidade": 19,
+        "idProd": 1,
+        "quantidade": 1,
         "idFunc": 1,
         "idFornecedor": "",
         "tipo": "Saída"

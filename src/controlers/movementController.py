@@ -1,5 +1,3 @@
-from src.infrastructure.services.idGen import GeradorID
-from src.model.entities.movement import Movimentacao
 from src.model.DAO.movementDAO import MovimentoDAO
 from src.views.viewMovement import ViewMovimento
 from src.model.DAO.employeeDAO import EmployeeDAO
@@ -11,10 +9,12 @@ class MovementController:
         self.dao = MovimentoDAO()
         self.page = page
         tela.btnCadastrarMovimento.on_click=self.handleAddMov
+        tela.tipo.on_select=self.deixarDisabled
+        tela.idFuncionario.on_change=self.deixarBtnDisabled
+        tela.idFornecedor.on_change=self.deixarBtnDisabled
         self.tela = tela
         self.listarProdutos()
         self.addDropdownOptions()
-
 
 
     def listarProdutos(self):
@@ -33,6 +33,33 @@ class MovementController:
             self.tela.tabelaMovimentos.rows.append(linhas)
         self.page.update()
 
+    def deixarBtnDisabled(self):
+        if self.tela.tipo.value == "Entrada":
+            if any(val == "" for val in [self.tela.idProd.value,self.tela.quantidade.value,self.tela.idFornecedor.value]):
+
+                self.tela.btnCadastrarMovimento.disabled = True
+            else:
+                self.tela.btnCadastrarMovimento.disabled = False
+
+        elif self.tela.tipo.value == "Saída":
+            if any(val == "" for val in[self.tela.idProd.value, self.tela.quantidade.value, self.tela.idFuncionario.value]):
+                self.tela.btnCadastrarMovimento.disabled = True
+            else:
+                self.tela.btnCadastrarMovimento.disabled = False
+
+    def deixarDisabled(self):
+        if self.tela.tipo.value == "Entrada":
+            self.tela.idFuncionario.value = 0
+            self.tela.idFuncionario.disabled = True
+            self.tela.idFornecedor.disabled = False
+            self.tela.btnCadastrarMovimento.disabled= True
+
+        elif self.tela.tipo.value == "Saída":
+            self.tela.idFornecedor.value = 0
+            self.tela.idFornecedor.disabled = True
+            self.tela.idFuncionario.disabled = False
+            self.tela.btnCadastrarMovimento.disabled= True
+
 
     def handleAddMov(self):
         print("Entrou no handleAddMov")
@@ -41,7 +68,7 @@ class MovementController:
             if self.tela.tipo.value == "Entrada":
                 self.dao.addMovimentoEntrada(int(self.tela.idProd.value),int(self.tela.quantidade.value),int(self.tela.idFornecedor.value))
             elif self.tela.tipo.value == "Saída":
-                self.dao.addMovimentoSaida(int(self.tela.idProd.value),int(self.tela.quantidade.value),int(self.tela.idFornecedor.value))
+                self.dao.addMovimentoSaida(int(self.tela.idProd.value),int(self.tela.quantidade.value),int(self.tela.idFuncionario.value))
             self.tela.idProd.value = ""
             self.tela.quantidade.value = ""
             self.tela.idFuncionario.value = ""

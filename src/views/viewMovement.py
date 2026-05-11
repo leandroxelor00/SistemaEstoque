@@ -14,7 +14,7 @@ class ViewMovimento(View):
         self.quantidade=TextField(label="Quantidade",col=4)
         self.idFornecedor=TextField(label="idFornecedor",col=4)
         self.idFuncionario=TextField(label="idFuncionario",col=3)
-        self.btnCadastrarMovimento=Button("Add Movimento",icon=CupertinoIcons.PLUS,col=4,width=100,margin=Margin(0,10,0,0))
+        self.btnCadastrarMovimento=Button("Add Movimento",icon=CupertinoIcons.PLUS,col=4,width=100,margin=Margin(0,10,0,0),disabled=True)
         self.route = "/movimentos"
 
 
@@ -24,8 +24,8 @@ class ViewMovimento(View):
                 DataColumn(label=Text("idMovimento")),
                 DataColumn(label=Text("idProd")),
                 DataColumn(label=Text("Quantidade")),
-                DataColumn(label=Text("idFuncionario")),
                 DataColumn(label=Text("idFornecedor")),
+                DataColumn(label=Text("idFuncionario")),
                 DataColumn(label=Text("Tipo")),
             ],
             col=12
@@ -36,7 +36,7 @@ class ViewMovimento(View):
         modalMovimento=Container(
             content=Column(
                 controls=[
-                    ResponsiveRow(controls=[self.idProd,self.quantidade, self.selectFunc], alignment=MainAxisAlignment.SPACE_AROUND),
+                    ResponsiveRow(controls=[self.idProd,self.quantidade, self.tipo], alignment=MainAxisAlignment.SPACE_AROUND),
                     ResponsiveRow(controls=[self.idFuncionario, self.idFornecedor, self.btnCadastrarMovimento], alignment=MainAxisAlignment.SPACE_AROUND)
                 ]
             ),border=Border.all(2,"Black"),height=150,padding=15,
