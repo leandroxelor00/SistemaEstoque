@@ -13,11 +13,11 @@ class MovementController:
         tela.idFuncionario.on_change=self.deixarBtnDisabled
         tela.idFornecedor.on_change=self.deixarBtnDisabled
         self.tela = tela
-        self.listarProdutos()
+        self.listarMovimentos()
         self.addDropdownOptions()
 
 
-    def listarProdutos(self):
+    def listarMovimentos(self):
         self.tela.tabelaMovimentos.rows.clear()
         for produto in self.dao.viewList():
             linhas = DataRow(
@@ -79,7 +79,7 @@ class MovementController:
             self.tela.idFuncionario.update()
             self.tela.idFornecedor.update()
             self.tela.tipo.update()
-            self.listarProdutos()
+            self.listarMovimentos()
         except Exception as e:
             print(e)
 
