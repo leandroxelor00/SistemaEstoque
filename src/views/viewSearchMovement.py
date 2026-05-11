@@ -22,6 +22,7 @@ class ViewSearchMovement(View):
             col=12
         )
 
+    
 
     def build(self):
         modalBarra = Container(
