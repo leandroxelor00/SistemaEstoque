@@ -4,12 +4,14 @@ from src.controlers.movementController import MovementController
 from src.controlers.employeeController import EmployeeController
 from src.controlers.searchEmployeeController import SearchEmployeeController
 from src.controlers.searchMovementController import SearchMovementController
+from src.controlers.supplierController import SupplierController
 from src.views.viewShowEmployee import ViewShowEmployee
 from src.views.viewEmployee import ViewEmployee
 from src.views.viewShowMovement import ViewShowMovement
 from src.views.viewMovement import ViewMovimento
 from src.views.viewProduct import ViewProduto
 from src.views.viewShowProduct import ViewShowProduct
+from src.views.viewSupplier import ViewSupplier
 
 
 # def produtoConstructor(page):
@@ -42,8 +44,14 @@ from src.views.viewShowProduct import ViewShowProduct
 #
 #      return viewEmployee
 
-def produtoConstructor(page):
-     viewShowEmployee = ViewShowEmployee()
-     employee = SearchEmployeeController(page,viewShowEmployee)
+# def produtoConstructor(page):
+#      viewShowEmployee = ViewShowEmployee()
+#      employee = SearchEmployeeController(page,viewShowEmployee)
+#
+#      return viewShowEmployee
 
-     return viewShowEmployee
+def produtoConstructor(page):
+    viewSupplier = ViewSupplier()
+    supplier = SupplierController(page, viewSupplier)
+
+    return viewSupplier
