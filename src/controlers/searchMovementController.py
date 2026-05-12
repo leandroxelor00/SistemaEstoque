@@ -9,6 +9,7 @@ class SearchMovementController:
         self.dao = MovimentoDAO()
         self.page = page
         self.tela = tela
+        tela.searchPerType.on_select=self.searchMovement
         tela.searchBar.on_change=self.searchMovement
         self.listarMovimentos()
 
@@ -31,20 +32,39 @@ class SearchMovementController:
             self.addLinhas(movimentos)
         self.page.update()
 
+
     def searchMovement(self):
         self.tela.tabelaMovimentos.rows.clear()
 
         for movimentos in self.dao.viewList():
-            if not self.tela.searchBar.value and not self.tela.searchBar2.value:
-                self.addLinhas(movimentos)
+
+            if self.tela.searchPerType.value not in ("Entrada", "Saída"):
+                self.tela.searchBar.disabled = False
+
+                if self.tela.searchPerType.value == "idMovimento":
+                    self.tela.searchBar.label = "Pesquisar por id movimento"
+
+                    if not self.tela.searchBar.value:
+                        self.addLinhas(movimentos)
+
+                    elif self.tela.searchBar.value == str(movimentos["idMovimento"]):
+                        self.addLinhas(movimentos)
+
+                elif self.tela.searchPerType.value == "idProd":
+                    self.tela.searchBar.label = "Pesquisar por id produto"
+
+                    if not self.tela.searchBar.value:
+                        self.addLinhas(movimentos)
+
+                    elif self.tela.searchBar.value == str(movimentos["idProd"]):
+                        self.addLinhas(movimentos)
 
             else:
-                if self.tela.searchBar.value == str(movimentos["idMovimento"]):
+                self.tela.searchBar.label = "Pequisar por..."
+                self.tela.searchBar.disabled = True
+                if self.tela.searchPerType.value == movimentos["tipo"]:
                     self.addLinhas(movimentos)
-                else:
 
-                    if self.tela.searchBar2.value == str(movimentos["idProd"]):
-                        self.addLinhas(movimentos)
 
         self.page.update()
 

@@ -14,5 +14,21 @@
         "idFunc": 1,
         "idFornecedor": "",
         "tipo": "Saída"
+    },
+    {
+        "idMovimento": 3,
+        "idProd": 4,
+        "quantidade": 1,
+        "idFornecedor": 1,
+        "idFunc": "",
+        "tipo": "Entrada"
+    },
+    {
+        "idMovimento": 4,
+        "idProd": 3,
+        "quantidade": 1,
+        "idFunc": 1,
+        "idFornecedor": "",
+        "tipo": "Saída"
     }
 ]

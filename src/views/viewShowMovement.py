@@ -1,13 +1,19 @@
 
-from flet import ResponsiveRow, Column, Container, View, Button,TextField,DataRow,DataCell,DataTable,DataColumn,Padding,Border,MainAxisAlignment,Text
+from flet import ResponsiveRow, Column, Container, View, Button, TextField, DataRow, DataCell, DataTable, DataColumn, \
+    Padding, Border, MainAxisAlignment, Text, Dropdown, dropdown
 
 
 class ViewShowMovement(View):
 
     def __init__(self):
         super().__init__()
-        self.searchBar = TextField(label="Pesquisar movimento por ID",col=5)
-        self.searchBar2 = TextField(label="Pesquisar produto por ID", col=5)
+        self.searchBar = TextField(label="Pesquisar por...",col=5)
+        self.searchPerType = Dropdown(label="Procurar por...", width=250,height=50,
+                                      options=[dropdown.Option("idMovimento"),
+                                               dropdown.Option("idProd"),
+                                               dropdown.Option("Entrada"),
+                                               dropdown.Option("Saída")],col=5)
+
         self.btnSearch=Button("Procurar", col=3)
         self.route = ("/searchmovement")
 
@@ -27,7 +33,7 @@ class ViewShowMovement(View):
 
     def build(self):
         modalBarra = Container(
-            content=ResponsiveRow(controls=[self.searchBar, self.searchBar2], alignment=MainAxisAlignment.SPACE_BETWEEN),
+            content=ResponsiveRow(controls=[self.searchPerType,self.searchBar], alignment=MainAxisAlignment.SPACE_AROUND),
             padding=Padding(10, 20, 10, 20),
             border=Border.all(2, "Black"),
         )
