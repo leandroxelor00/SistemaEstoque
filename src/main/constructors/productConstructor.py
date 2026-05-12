@@ -1,6 +1,8 @@
 from src.controlers.productController import ProdutoController
 from src.controlers.searchProductController import searchProductController
 from src.controlers.movementController import MovementController
+from src.controlers.searchMovementController import SearchMovementController
+from src.views.viewShowMovement import ViewShowMovement
 from src.views.viewMovement import ViewMovimento
 from src.views.viewProduct import ViewProduto
 from src.views.viewShowProduct import ViewShowProduct
@@ -18,8 +20,14 @@ from src.views.viewShowProduct import ViewShowProduct
 #
 #     return viewShowProduct
 
-def produtoConstructor(page):
-    viewMovevement = ViewMovimento()
-    movimento = MovementController(page,viewMovevement)
+# def produtoConstructor(page):
+#     viewMovevement = ViewMovimento()
+#     movimento = MovementController(page,viewMovevement)
+#
+#     return viewMovevement
 
-    return viewMovevement
+def produtoConstructor(page):
+    viewShowMovement = ViewShowMovement()
+    showMovement = SearchMovementController(page,viewShowMovement)
+
+    return viewShowMovement
