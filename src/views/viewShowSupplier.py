@@ -2,20 +2,18 @@
 from flet import ResponsiveRow, Column, Container, View, Button,TextField,DataRow,DataCell,DataTable,DataColumn,Padding,Border,MainAxisAlignment,Text
 
 
-class ViewShowProduct(View):
+class ViewShowSupplier(View):
 
     def __init__(self):
         super().__init__()
         self.searchBar = TextField(label="Pesquisar por ID",col=7)
         self.btnSearch=Button("Procurar", col=3)
-        self.route = ("/searchproduct")
+        self.route = ("/searchsupplier")
 
-        self.tabelaProduto = DataTable(
+        self.tabelaFornecedor= DataTable(
             columns=[
-                DataColumn(label=Text("IdProd")),
+                DataColumn(label=Text("IdFornecedor")),
                 DataColumn(label=Text("Nome")),
-                DataColumn(label=Text("Marca")),
-                DataColumn(label=Text("Valor R$")),
             ],
             col=12
         )
@@ -29,7 +27,7 @@ class ViewShowProduct(View):
         )
 
         modalTabela = Container(
-            content=ResponsiveRow(controls=[self.tabelaProduto], alignment=MainAxisAlignment.SPACE_BETWEEN),
+            content=ResponsiveRow(controls=[self.tabelaFornecedor], alignment=MainAxisAlignment.SPACE_BETWEEN),
             padding=Padding(10, 20, 10, 20),
             border=Border.all(2, "Black"),
         )
