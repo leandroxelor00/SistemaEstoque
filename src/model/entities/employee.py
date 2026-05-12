@@ -2,9 +2,10 @@
 
 class Funcionario:
 
-    def __init__(self,nome:str,idFuncionario:int=None):
+    def __init__(self,idFunc:int,nome:str):
+        self.__idFunc = idFunc
         self.__nome = nome
-        self.__idFuncionario = idFuncionario
+
 
     @property
     def nome(self):
@@ -16,19 +17,20 @@ class Funcionario:
 
     @property
     def idFuncionario(self):
-        return self.__idFuncionario
+        return self.__idFunc
 
     def __eq__(self, other):
-        return self.__idFuncionario==other.idFuncionario
+        return self.__idFunc==other.idFunc
 
     def funcionario(self):
         return {
-            "idFuncionario": self.__idFuncionario,
+            "idFunc": self.__idFunc,
             "nome": self.__nome,
         }
 
     @staticmethod
     def dictToObject(data):
         return Funcionario(
-            data["idFuncionario"],
+            data["idFunc"],
+            data["nome"]
         )

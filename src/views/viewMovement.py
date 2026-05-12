@@ -15,7 +15,7 @@ class ViewMovimento(View):
         self.idFornecedor=TextField(label="idFornecedor",col=4)
         self.idFuncionario=TextField(label="idFuncionario",col=3)
         self.btnCadastrarMovimento=Button("Add Movimento",icon=CupertinoIcons.PLUS,col=4,width=100,margin=Margin(0,10,0,0),disabled=True)
-        self.route = "/movimentos"
+        self.route = "/movement"
 
 
 
