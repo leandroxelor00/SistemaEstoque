@@ -54,21 +54,21 @@ class MovimentoDAO:
     def viewList(self):
         return self.__conn.listData()
 
-    def deleteMovimento(self, id):
-        newList = [movimento for movimento in self.viewList() if movimento["idMovimento"] != id]
-        if len(newList) == len(self.viewList()):
-            raise ValueError("Erro ao tentar deletar o movimento")
-
-        self.__conn.saveList(newList)
-        print("Funcionário deletado com sucesso")
-
-    def searchById(self,id):
-        movimento = [movimento for movimento in self.viewList() if movimento["idMovimento"] == id]
-        if movimento:
-            for i in movimento:
-                return f"idMovimento: {i["idMovimento"]} | idProd: {i["idProd"]}"
-        else:
-            raise ValueError("Erro ao procurar um movimento por esse ID")
+    # def deleteMovimento(self, id):
+    #     newList = [movimento for movimento in self.viewList() if movimento["idMovimento"] != id]
+    #     if len(newList) == len(self.viewList()):
+    #         raise ValueError("Erro ao tentar deletar o movimento")
+    #
+    #     self.__conn.saveList(newList)
+    #     print("Funcionário deletado com sucesso")
+    #
+    # def searchById(self,id):
+    #     movimento = [movimento for movimento in self.viewList() if movimento["idMovimento"] == id]
+    #     if movimento:
+    #         for i in movimento:
+    #             return f"idMovimento: {i["idMovimento"]} | idProd: {i["idProd"]}"
+    #     else:
+    #         raise ValueError("Erro ao procurar um movimento por esse ID")
 
 # if __name__ == '__main__':
 #     mov = MovimentoDAO()
@@ -88,7 +88,7 @@ class MovimentoDAO:
 #     stk = EstoqueDAO()
 #     for i in stk.verEstoque():
 #         print(i["idProd"])
-if __name__ == '__main__':
-    mov = MovimentoDAO()
-    # mov.addMovimentoEntrada(5,10,1)
-    mov.addMovimentoSaida(5,10,1)
+# if __name__ == '__main__':
+#     mov = MovimentoDAO()
+#     # mov.addMovimentoEntrada(5,10,1)
+#     mov.addMovimentoSaida(5,10,1)

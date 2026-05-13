@@ -16,21 +16,21 @@ class ProdutosDAO:
     def viewList(self):
         return self.__conn.listData()
 
-    def deleteProd(self, id):
-        newList = [product for product in self.viewList() if product["idProd"] != id]
-        if len(newList) == len(self.viewList()):
-            raise ValueError("Nenhum product encontrado por esse ID")
-
-        self.__conn.saveList(newList)
-        print("product deletado com sucesso")
-
-    def searchById(self, id):
-        product = [product for product in self.viewList() if product["idProd"] == id]
-        if product:
-            for product in product:
-                return f"ID: {product["idProd"]} | Produto: {product["nome"]} | Preço: {product["valor"]}"
-        else:
-            raise ValueError("Produto não encontrado por esse ID")
+    # def deleteProd(self, id):
+    #     newList = [product for product in self.viewList() if product["idProd"] != id]
+    #     if len(newList) == len(self.viewList()):
+    #         raise ValueError("Nenhum product encontrado por esse ID")
+    #
+    #     self.__conn.saveList(newList)
+    #     print("product deletado com sucesso")
+    #
+    # def searchById(self, id):
+    #     product = [product for product in self.viewList() if product["idProd"] == id]
+    #     if product:
+    #         for product in product:
+    #             return f"ID: {product["idProd"]} | Produto: {product["nome"]} | Preço: {product["valor"]}"
+    #     else:
+    #         raise ValueError("Produto não encontrado por esse ID")
 
 # if __name__ == '__main__':
 #     p = ProdutosDAO()
