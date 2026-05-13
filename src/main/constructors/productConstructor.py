@@ -79,3 +79,9 @@ def produtoConstructor(page):
     showStock = SearchStockController(page,viewShowStock)
 
     return viewShowStock
+
+# def produtoConstructor(page):
+#     viewHome = ViewHome()
+#     home = HomeController(page,ViewHome)
+#
+#     return viewHome

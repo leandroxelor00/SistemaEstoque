@@ -8,7 +8,7 @@ class ViewProduto(View):
         self.marcaProd=TextField(label="Marca",icon=Icons.ADD_BOX,col=7)
         self.valorProd=TextField(label="Valor",prefix="R$",col=3)
         self.btnCadastrarProduto=Button("Add Prod",icon=CupertinoIcons.PLUS,col=3)
-        self.route = "/"
+        self.route = "/product"
 
 
 
