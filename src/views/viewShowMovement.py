@@ -3,7 +3,7 @@ from flet import ResponsiveRow, Column, Container, View, Button, TextField, Data
     Padding, Border, MainAxisAlignment, Text, Dropdown, dropdown
 
 
-class ViewShowMovement(View):
+class ViewShowMovement:
 
     def __init__(self):
         super().__init__()
@@ -44,10 +44,7 @@ class ViewShowMovement(View):
             border=Border.all(2, "Black"),
         )
 
-        self.controls = [Column(
+        return Column(
             controls=[modalBarra,modalTabela]
 
             )
-        ]
-
-        return self.controls

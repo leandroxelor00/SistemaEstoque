@@ -2,7 +2,7 @@ from src.model.DAO.productsDAO import ProdutosDAO
 from src.views.viewShowProduct import ViewShowProduct
 from flet import DataCell,DataRow,Text
 
-class searchProductController:
+class SearchProductController:
 
     def __init__(self,page,tela:ViewShowProduct):
         self.dao = ProdutosDAO()

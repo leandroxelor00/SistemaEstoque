@@ -1,12 +1,12 @@
 from src.infrastructure.services.idGen import GeradorID
 from src.model.entities.employee import Funcionario
 from src.model.DAO.employeeDAO import EmployeeDAO
-from src.views.viewEmployee import ViewEmployee
+from src.views.viewRegEmployee import ViewRegEmployee
 from flet import *
 
 class EmployeeController:
 
-    def __init__(self,page,tela:ViewEmployee):
+    def __init__(self, page, tela:ViewRegEmployee):
         self.dao = EmployeeDAO()
         self.page = page
         tela.btnCadastrarFunc.on_click=self.handleAddProd

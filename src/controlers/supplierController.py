@@ -1,12 +1,12 @@
 from src.infrastructure.services.idGen import GeradorID
 from src.model.entities.supplier import Fornecedor
 from src.model.DAO.supplierDAO import SupplierDAO
-from src.views.viewSupplier import ViewSupplier
+from src.views.viewRegSupplier import ViewRegSupplier
 from flet import *
 
 class SupplierController:
 
-    def __init__(self,page,tela:ViewSupplier):
+    def __init__(self, page, tela:ViewRegSupplier):
         self.dao = SupplierDAO()
         self.page = page
         tela.btnCadastrarFornecedor.on_click=self.handleAddProd
