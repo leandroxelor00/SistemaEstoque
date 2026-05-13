@@ -1,6 +1,7 @@
 [
     {
-        "idProd": 5,
+        "idEstoque": 1,
+        "idProd": 1,
         "quantidade": 1
     }
 ]
