@@ -1,87 +1,76 @@
-import flet as ft
-from src.main.constructors.productConstructor import produtoConstructor
+from flet import *
+from src.main.constructors.productConstructor import productConstructor
+from src.main.constructors.searchProductConstructor import searchProductConstructor
 
 
-def main(page: ft.Page):
-    page.title = "Sistema de Estoque - Debug"
-    page.window_width = 1200
-    page.window_height = 700
+def main(page:Page):
+    page.title = "Sistema de Estoque"
+    page.window_width = 1000
+    page.window_height = 600
     page.padding = 0
-    page.theme_mode = ft.ThemeMode.DARK
-    page.bgcolor = ft.Colors.BLUE_GREY_900
+    page.theme_mode = ThemeMode.DARK
 
-    # ====================== NavigationRail ======================
-    def change_navigation(e):
-        routes = {0: "/home", 1: "/product", 2: "/usuarios", 3: "/config"}
-        page.go(routes.get(e.control.selected_index, "/home"))
+    # Container que vai receber o conteúdo
+    content_container = Container(expand=True, padding=20)
 
-    navigation = ft.NavigationRail(
+    # Função para trocar o conteúdo diretamente
+    def change_content(index):
+        if index == 0:  # Home
+            content_container.content = Column(
+                [
+                    Text("🏠 Home", size=40, weight=FontWeight.BOLD),
+                    Text("Bem-vindo ao Sistema de Estoque", size=20),
+                ],
+                alignment=MainAxisAlignment.CENTER,
+                horizontal_alignment=CrossAxisAlignment.CENTER,
+                expand=True,
+            )
+        elif index == 1:  # Produtos
+            content_container.content = productConstructor(page)
+        elif index == 2:  # Produtos
+            content_container.content = searchProductConstructor(page)
+
+        page.update()
+
+    # NavigationRail
+    navigation = NavigationRail(
         selected_index=0,
         extended=True,
-        min_width=100,
-        min_extended_width=240,
-        label_type=ft.NavigationRailLabelType.ALL,
-        leading=ft.Icon(ft.Icons.STORE, size=40),
+        label_type=NavigationRailLabelType.ALL,
         destinations=[
-            ft.NavigationRailDestination(icon=ft.Icons.HOME_OUTLINED, selected_icon=ft.Icons.HOME, label="Home"),
-            ft.NavigationRailDestination(icon=ft.Icons.INVENTORY_2_OUTLINED, selected_icon=ft.Icons.INVENTORY_2,
-                                         label="Produtos"),
-            ft.NavigationRailDestination(icon=ft.Icons.PEOPLE_OUTLINED, selected_icon=ft.Icons.PEOPLE,
-                                         label="Usuários"),
-            ft.NavigationRailDestination(icon=ft.Icons.SETTINGS_OUTLINED, selected_icon=ft.Icons.SETTINGS,
-                                         label="Configurações"),
+            NavigationRailDestination(
+                icon=Icons.HOME_OUTLINED,
+                selected_icon=Icons.HOME,
+                label="Home"
+            ),
+            NavigationRailDestination(
+                icon=Icons.INVENTORY_2_OUTLINED,
+                selected_icon=Icons.INVENTORY_2,
+                label="Produtos"
+            ),
+            NavigationRailDestination(
+                icon=Icons.CIRCLE_OUTLINED,
+                label="Consultar Produtos"
+            ),
         ],
-        on_change=change_navigation,
+        on_change=lambda e: change_content(e.control.selected_index),
     )
 
-    def layout_page(content):
-        return ft.Row([navigation, ft.VerticalDivider(width=1), ft.Container(expand=True, padding=20, content=content)],
-                      expand=True)
+    # Layout
+    page.add(
+        Row(
+            [
+                navigation,
+                VerticalDivider(width=1),
+                content_container,
+            ],
+            expand=True,
+        )
+    )
 
-    # ====================== Route Change com Debug ======================
-    def route_change(e):
-        try:
-            page.views.clear()
-
-            route_to_index = {"/home": 0, "/product": 1, "/usuarios": 2, "/config": 3}
-            navigation.selected_index = route_to_index.get(page.route, 0)
-
-            if page.route == "/product":
-                print("🔄 Carregando produtoConstructor...")  # debug
-                body = produtoConstructor(page)
-                print("✅ produtoConstructor carregado com sucesso")
-
-            elif page.route == "/home":
-                body = ft.Column([ft.Text("🏠 HOME", size=32, weight=ft.FontWeight.BOLD)], expand=True)
-
-            else:
-                body = ft.Text(f"Página: {page.route}", size=20)
-
-            page.views.append(ft.View(route=page.route, controls=[layout_page(body)], padding=0))
-            page.update()
-
-        except Exception as ex:
-            print(f"❌ ERRO no route_change: {ex}")
-            import traceback
-            traceback.print_exc()
-
-            # Mostra erro na tela
-            body = ft.Column([
-                ft.Text("Erro ao carregar a tela", size=24, color=ft.Colors.RED_400),
-                ft.Text(str(ex), color=ft.Colors.RED_200),
-            ])
-            page.views.append(ft.View(route=page.route, controls=[layout_page(body)], padding=0))
-            page.update()
-
-    def view_pop(e):
-        page.views.pop()
-        page.go(page.views[-1].route)
-
-    page.on_route_change = route_change
-    page.on_view_pop = view_pop
-
-    page.go("/home")
+    # Inicia com Home
+    change_content(0)
 
 
 if __name__ == '__main__':
-    ft.run(main, port=8000)
+    run(main)

@@ -1,13 +1,13 @@
 from flet import *
-from src.main.constructors.productConstructor import produtoConstructor
+from src.main.constructors.productConstructor import productConstructor
 
 def app(page:Page):
-    page.title = "Cadastro de Edulto"
+    page.title = "Sistema de Estoque"
 
     def changeRoute():
         page.views.clear()
         page.views.append(
-            produtoConstructor(page)
+            productConstructor(page)
         )
 
         page.update()

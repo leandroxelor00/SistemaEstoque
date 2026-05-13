@@ -1,9 +1,8 @@
 from flet import *
 
-class ViewProduto(View):
+class ViewProduto:
 
     def __init__(self):
-        super().__init__()
         self.nomeProd=TextField(label="Nome",icon=Icons.PERSON,col=7)
         self.marcaProd=TextField(label="Marca",icon=Icons.ADD_BOX,col=7)
         self.valorProd=TextField(label="Valor",prefix="R$",col=3)
@@ -39,12 +38,9 @@ class ViewProduto(View):
             border=Border.all(2, "Black"),
         )
 
-        self.controls=[Column(
-            controls=[modalProduto,modalTabela]
+        return Column(
+            controls=[modalProduto,modalTabela],
+            expand=True
 
                     )
-            ]
-
-        return self.controls
-
 
