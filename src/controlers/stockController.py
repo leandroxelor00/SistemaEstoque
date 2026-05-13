@@ -1,12 +1,12 @@
 from src.infrastructure.services.idGen import GeradorID
 from src.model.entities.stock import Estoque
 from src.model.DAO.stockDAO import EstoqueDAO
-from src.views.viewStock import ViewStock
+from src.views.viewRegStock import ViewRegStock
 from flet import *
 
 class StockController:
 
-    def __init__(self,page,tela:ViewStock):
+    def __init__(self, page, tela:ViewRegStock):
         self.dao = EstoqueDAO()
         self.page = page
         tela.btnCadastrarNoEstoque.on_click=self.handleAddProd

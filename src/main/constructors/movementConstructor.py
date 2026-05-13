@@ -1,8 +1,6 @@
-from src.controlers.movementController import MovementController
-from src.views.viewMovement import ViewMovimento
+from src.views.viewMovement import ViewMovement
 
 def movementConstructor(page):
-    viewMovevement = ViewMovimento()
-    MovementController(page,viewMovevement)
+    viewMovevement = ViewMovement(page)
 
     return viewMovevement.build()

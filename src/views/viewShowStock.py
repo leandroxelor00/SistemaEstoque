@@ -2,10 +2,10 @@
 from flet import ResponsiveRow, Column, Container, View, Button,TextField,DataRow,DataCell,DataTable,DataColumn,Padding,Border,MainAxisAlignment,Text
 
 
-class ViewShowStock(View):
+class ViewShowStock:
 
     def __init__(self):
-        super().__init__()
+
         self.searchBar = TextField(label="Pesquisar por ID",col=7)
         self.btnSearch=Button("Procurar", col=3)
         self.route = ("/searchstock")
@@ -33,10 +33,7 @@ class ViewShowStock(View):
             border=Border.all(2, "Black"),
         )
 
-        self.controls = [Column(
+        return Column(
             controls=[modalBarra,modalTabela]
 
             )
-        ]
-
-        return self.controls

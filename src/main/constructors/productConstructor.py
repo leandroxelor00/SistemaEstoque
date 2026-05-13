@@ -1,8 +1,6 @@
-from src.controlers.productController import ProdutoController
-from src.views.viewProduct import ViewProduto
+from src.views.viewProduct import ViewProduct
 
 def productConstructor(page):
-    viewProduto = ViewProduto()
-    ProdutoController(page, viewProduto)
+    viewProduct = ViewProduct(page)
 
-    return viewProduto.build()
+    return viewProduct.build()

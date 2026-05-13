@@ -1,12 +1,12 @@
 from src.infrastructure.services.idGen import GeradorID
 from src.model.entities.product import Produto
 from src.model.DAO.productsDAO import ProdutosDAO
-from src.views.viewProduct import ViewProduto
+from src.views.viewRegProduct import ViewRegProduto
 from flet import *
 
 class ProdutoController:
 
-    def __init__(self,page,tela:ViewProduto):
+    def __init__(self, page, tela:ViewRegProduto):
         self.dao = ProdutosDAO()
         self.page = page
         tela.btnCadastrarProduto.on_click=self.handleAddProd

@@ -1,11 +1,11 @@
 from src.model.DAO.movementDAO import MovimentoDAO
-from src.views.viewMovement import ViewMovimento
+from src.views.viewRegMovement import ViewRegMovimento
 from src.model.DAO.employeeDAO import EmployeeDAO
 from flet import *
 
 class MovementController:
 
-    def __init__(self,page,tela:ViewMovimento):
+    def __init__(self, page, tela:ViewRegMovimento):
         self.dao = MovimentoDAO()
         self.page = page
         tela.btnCadastrarMovimento.on_click=self.handleAddMov

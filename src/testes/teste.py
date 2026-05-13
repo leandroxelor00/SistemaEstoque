@@ -1,6 +1,8 @@
 from flet import *
+
+from src.main.constructors.prodConstructor import prodConstructor
 from src.main.constructors.productConstructor import productConstructor
-from src.main.constructors.searchProductConstructor import searchProductConstructor
+from src.main.constructors.searchProductConstructor import SearchProductConstructor
 
 
 def main(page:Page):
@@ -26,9 +28,9 @@ def main(page:Page):
                 expand=True,
             )
         elif index == 1:  # Produtos
-            content_container.content = productConstructor(page)
+            content_container.content = prodConstructor(page)
         elif index == 2:  # Produtos
-            content_container.content = searchProductConstructor(page)
+            content_container.content = SearchProductConstructor(page)
 
         page.update()
 

@@ -1,5 +1,5 @@
 from flet import run
-from src.main.handleProcess import app
+from src.main.handleProcess import main
 
 if __name__ == '__main__':
-    run(app)
+    run(main)
