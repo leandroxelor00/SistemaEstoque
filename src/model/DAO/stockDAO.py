@@ -1,4 +1,5 @@
 from src.model.DAO.baseDB import BaseDB
+from src.model.DAO.productsDAO import ProdutosDAO
 
 class EstoqueDAO(BaseDB):
     def __init__(self):

@@ -2,54 +2,62 @@ from src.model.DAO.baseDB import BaseDB
 from src.model.entities.movement import Movimentacao
 from src.infrastructure.services.idGen import GeradorID
 from src.model.DAO.stockDAO import EstoqueDAO
+from src.model.DAO.productsDAO import ProdutosDAO
 
 
 class MovimentoDAO:
 
     def __init__(self):
         self.__conn = BaseDB("movement.json")
+        self.daoProd = ProdutosDAO()
 
     def addMovimentoEntrada(self, idProduto, quantidade, idFornecedor):
-        try:
-            data = {
-                "idMovimento": GeradorID("movement.json","idMovimento").idGerado,
-                "idProd": idProduto,
-                "quantidade": quantidade,
-                "idFornecedor": idFornecedor,
-                "idFunc": "",
-                "tipo": "Entrada",
-            }
-            self.__conn.save(data)
+            for produtos in self.daoProd.viewList():
+                if idProduto == produtos["idProd"]:
+                    try:
+                        data = {
+                            "idMovimento": GeradorID("movement.json","idMovimento").idGerado,
+                            "idProd": idProduto,
+                            "nome": produtos["nome"],
+                            "quantidade": quantidade,
+                            "idFornecedor": idFornecedor,
+                            "idFunc": "",
+                            "tipo": "Entrada",
+                        }
+                        self.__conn.save(data)
 
-            estoque = EstoqueDAO()
-            for i in estoque.verEstoque():
-                if i["idProd"] == idProduto:
-                    estoque.aumentarQttProd(idProduto,quantidade)
+                        estoque = EstoqueDAO()
+                        for i in estoque.verEstoque():
+                            if i["idProd"] == idProduto:
+                                estoque.aumentarQttProd(idProduto,quantidade)
 
-            return "Movimento adicionado"
-        except Exception as e:
-            raise ValueError("Erro ao adicionar o movimento no db: ", e)
+                        return "Movimento adicionado"
+                    except Exception as e:
+                        raise ValueError("Erro ao adicionar o movimento no db: ", e)
 
     def addMovimentoSaida(self, idProduto, quantidade, idFuncionario):
-        try:
-            data = {
-                "idMovimento": GeradorID("movement.json","idMovimento").idGerado,
-                "idProd": idProduto,
-                "quantidade": quantidade,
-                "idFunc": idFuncionario,
-                "idFornecedor": "",
-                "tipo": "Saída",
-            }
-            self.__conn.save(data)
+        for produtos in self.daoProd.viewList():
+            if idProduto == produtos["idProd"]:
+                try:
+                    data = {
+                        "idMovimento": GeradorID("movement.json","idMovimento").idGerado,
+                        "idProd": idProduto,
+                        "nome": produtos["nome"],
+                        "quantidade": quantidade,
+                        "idFunc": idFuncionario,
+                        "idFornecedor": "",
+                        "tipo": "Saída",
+                    }
+                    self.__conn.save(data)
 
-            estoque = EstoqueDAO()
-            for i in estoque.verEstoque():
-                if i["idProd"] == idProduto:
-                    estoque.retirarQttProd(idProduto, quantidade)
+                    estoque = EstoqueDAO()
+                    for i in estoque.verEstoque():
+                        if i["idProd"] == idProduto:
+                            estoque.retirarQttProd(idProduto, quantidade)
 
-            return "Movimento adicionado"
-        except Exception as e:
-            raise ValueError("Erro ao adicionar o movimento no db: ", e)
+                    return "Movimento adicionado"
+                except Exception as e:
+                    raise ValueError("Erro ao adicionar o movimento no db: ", e)
 
     def viewList(self):
         return self.__conn.listData()
@@ -88,7 +96,6 @@ class MovimentoDAO:
 #     stk = EstoqueDAO()
 #     for i in stk.verEstoque():
 #         print(i["idProd"])
-# if __name__ == '__main__':
-#     mov = MovimentoDAO()
-#     # mov.addMovimentoEntrada(5,10,1)
-#     mov.addMovimentoSaida(5,10,1)
+if __name__ == '__main__':
+    m = MovimentoDAO()
+    m.coincidirId()

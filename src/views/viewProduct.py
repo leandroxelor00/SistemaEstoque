@@ -1,6 +1,6 @@
 from flet import *
 
-from src.controlers.SearchProductController import SearchProductController
+from src.controlers.searchProductController import SearchProductController
 from src.controlers.productController import ProdutoController
 
 
