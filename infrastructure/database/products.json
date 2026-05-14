@@ -1,0 +1,122 @@
+[
+    {
+        "idProd": 1,
+        "nome": "Arroz Branco Tipo 1",
+        "marca": "Camil",
+        "valor": "27.90"
+    },
+    {
+        "idProd": 2,
+        "nome": "Feijão Carioca",
+        "marca": "Kicaldo",
+        "valor": "9.50"
+    },
+    {
+        "idProd": 3,
+        "nome": "Macarrão Espaguete",
+        "marca": "Renata",
+        "valor": "6.99"
+    },
+    {
+        "idProd": 4,
+        "nome": "Óleo de Soja 900ml",
+        "marca": "Liza",
+        "valor": "8.49"
+    },
+    {
+        "idProd": 5,
+        "nome": "Açúcar Refinado 1kg",
+        "marca": "União",
+        "valor": "5.79"
+    },
+    {
+        "idProd": 6,
+        "nome": "Sal Refinado 1kg",
+        "marca": "Cisne",
+        "valor": "3.25"
+    },
+    {
+        "idProd": 7,
+        "nome": "Café Torrado e Moído",
+        "marca": "Pilão",
+        "valor": "18.90"
+    },
+    {
+        "idProd": 8,
+        "nome": "Leite Integral 1L",
+        "marca": "Piracanjuba",
+        "valor": "5.49"
+    },
+    {
+        "idProd": 9,
+        "nome": "Margarina Cremosa",
+        "marca": "Qualy",
+        "valor": "7.99"
+    },
+    {
+        "idProd": 10,
+        "nome": "Biscoito Recheado Chocolate",
+        "marca": "Trakinas",
+        "valor": "4.25"
+    },
+    {
+        "idProd": 11,
+        "nome": "Refrigerante Cola 2L",
+        "marca": "Coca-Cola",
+        "valor": "10.99"
+    },
+    {
+        "idProd": 12,
+        "nome": "Suco de Laranja Integral",
+        "marca": "Del Valle",
+        "valor": "12.50"
+    },
+    {
+        "idProd": 13,
+        "nome": "Chocolate ao Leite",
+        "marca": "Lacta",
+        "valor": "8.75"
+    },
+    {
+        "idProd": 14,
+        "nome": "Farinha de Trigo 1kg",
+        "marca": "Dona Benta",
+        "valor": "6.40"
+    },
+    {
+        "idProd": 15,
+        "nome": "Molho de Tomate Tradicional",
+        "marca": "Quero",
+        "valor": "3.89"
+    },
+    {
+        "idProd": 16,
+        "nome": "Atum Ralado em Óleo",
+        "marca": "Gomes da Costa",
+        "valor": "11.90"
+    },
+    {
+        "idProd": 17,
+        "nome": "Milho Verde em Conserva",
+        "marca": "Fugini",
+        "valor": "4.15"
+    },
+    {
+        "idProd": 18,
+        "nome": "Achocolatado em Pó",
+        "marca": "Nescau",
+        "valor": "13.99"
+    },
+    {
+        "idProd": 19,
+        "nome": "Iogurte Natural Integral",
+        "marca": "Vigor",
+        "valor": "6.75"
+    },
+    {
+        "idProd": 20,
+        "nome": "Batata Palha Tradicional",
+        "marca": "Yoki",
+        "valor": "9.30"
+    }
+]
