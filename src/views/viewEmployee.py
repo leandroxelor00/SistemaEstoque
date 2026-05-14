@@ -50,26 +50,82 @@ class ViewEmployee:
     def build(self):
 
         sub_nav_bar = Container(
-            content=Row(
+            padding=20,
+            border_radius=16,
+            bgcolor="#111827",
+            border=Border.all(1, "#1E293B"),
+            margin=Margin(0, 0, 0, 20),
+
+            content=Column(
+                spacing=15,
                 controls=[
-                    self.btn_cadastrar,
-                    Container(width=10),
-                    self.btn_consultar,
-                ],
-                alignment=MainAxisAlignment.START,
-            ),
-            padding=Padding.all(10),
-            border=Border.all(2,"Black"),
-            border_radius=5,
-            margin=margin.only(bottom=20),
+
+                    Text(
+                        "Funcionários",
+                        size=28,
+                        weight="bold",
+                        color="white",
+                    ),
+
+                    Text(
+                        "Gerencie os funcionários do sistema.",
+                        size=14,
+                        color="#94A3B8",
+                    ),
+
+                    Row(
+                        spacing=15,
+                        controls=[
+
+                            ElevatedButton(
+                                "Cadastrar Funcionário",
+                                icon=Icons.PERSON_ADD,
+                                bgcolor="#2563EB",
+                                color="white",
+                                style=ButtonStyle(
+                                    padding=20,
+                                    shape=RoundedRectangleBorder(radius=12),
+                                ),
+                                on_click=lambda e: self.showCadastro(),
+                            ),
+
+                            ElevatedButton(
+                                "Consultar Funcionários",
+                                icon=Icons.SEARCH,
+                                bgcolor="#1E293B",
+                                color="white",
+                                style=ButtonStyle(
+                                    padding=20,
+                                    shape=RoundedRectangleBorder(radius=12),
+                                ),
+                                on_click=lambda e: self.showConsulta(),
+                            ),
+                        ]
+                    )
+                ]
+            )
         )
 
         self.showCadastro()
 
-        return Column(
-            controls=[
-                sub_nav_bar,
-                self.sub_content,
-            ],
+        return Container(
             expand=True,
+            padding=20,
+            bgcolor="#0F172A",
+
+            content=Column(
+                expand=True,
+                controls=[
+
+                    sub_nav_bar,
+
+                    Container(
+                        expand=True,
+                        padding=20,
+                        bgcolor="#111827",
+
+                        content=self.sub_content
+                    )
+                ]
+            )
         )
