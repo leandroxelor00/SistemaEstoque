@@ -82,7 +82,7 @@ def main(page:Page):
                 VerticalDivider(width=50),
                 container,
             ],
-            expand=True,
+        expand=True,
         )
     )
 

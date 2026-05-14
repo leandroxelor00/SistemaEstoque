@@ -2,6 +2,7 @@
     {
         "idMovimento": 1,
         "idProd": 1,
+        "nome": "Arroz Branco Tipo 1",
         "quantidade": 1,
         "idFornecedor": 1,
         "idFunc": "",
@@ -9,40 +10,36 @@
     },
     {
         "idMovimento": 2,
-        "idProd": 1,
-        "quantidade": 1,
+        "idProd": 2,
+        "nome": "Arroz Branco Tipo 1",
+        "quantidade": 5,
         "idFunc": 1,
         "idFornecedor": "",
         "tipo": "Saída"
     },
     {
         "idMovimento": 3,
-        "idProd": 4,
-        "quantidade": 1,
-        "idFornecedor": 1,
-        "idFunc": "",
-        "tipo": "Entrada"
-    },
-    {
-        "idMovimento": 4,
-        "idProd": 3,
+        "idProd": 5,
+        "nome": "Arroz Branco Tipo 1",
         "quantidade": 1,
         "idFunc": 1,
         "idFornecedor": "",
         "tipo": "Saída"
     },
     {
-        "idMovimento": 5,
-        "idProd": 1,
-        "quantidade": 5,
+        "idMovimento": 4,
+        "idProd": 5,
+        "nome": "Açúcar Refinado 1kg",
+        "quantidade": 1,
         "idFornecedor": 1,
         "idFunc": "",
         "tipo": "Entrada"
     },
     {
-        "idMovimento": 6,
-        "idProd": 1,
-        "quantidade": 4,
+        "idMovimento": 5,
+        "idProd": 8,
+        "nome": "Leite Integral 1L",
+        "quantidade": 1,
         "idFunc": 1,
         "idFornecedor": "",
         "tipo": "Saída"

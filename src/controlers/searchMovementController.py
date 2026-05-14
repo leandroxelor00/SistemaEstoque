@@ -1,4 +1,5 @@
 from src.model.DAO.movementDAO import MovimentoDAO
+from src.model.DAO.productsDAO import ProdutosDAO
 from src.views.viewShowMovement import ViewShowMovement
 from src.controlers.movementController import MovementController
 from flet import DataCell,DataRow,Text
@@ -7,6 +8,7 @@ class SearchMovementController:
 
     def __init__(self,page,tela:ViewShowMovement):
         self.dao = MovimentoDAO()
+        self.daoProd = ProdutosDAO()
         self.page = page
         self.tela = tela
         tela.searchPerType.on_select=self.searchMovement
@@ -14,10 +16,11 @@ class SearchMovementController:
         self.listarMovimentos()
 
     def addLinhas(self,produto):
+
         linhas = DataRow(
             cells=[
                 DataCell(Text(produto["idMovimento"])),
-                DataCell(Text(produto["idProd"])),
+                DataCell(Text(produto["nome"])),
                 DataCell(Text(produto["quantidade"])),
                 DataCell(Text(produto["idFornecedor"])),
                 DataCell(Text(produto["idFunc"])),

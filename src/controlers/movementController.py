@@ -1,4 +1,5 @@
 from src.model.DAO.movementDAO import MovimentoDAO
+from src.model.DAO.productsDAO import ProdutosDAO
 from src.views.viewRegMovement import ViewRegMovimento
 from src.model.DAO.employeeDAO import EmployeeDAO
 from flet import *
@@ -7,6 +8,7 @@ class MovementController:
 
     def __init__(self, page, tela:ViewRegMovimento):
         self.dao = MovimentoDAO()
+        self.daoProd = ProdutosDAO()
         self.page = page
         tela.btnCadastrarMovimento.on_click=self.handleAddMov
         tela.tipo.on_select=self.deixarDisabled
@@ -23,7 +25,7 @@ class MovementController:
             linhas = DataRow(
                 cells=[
                     DataCell(Text(produto["idMovimento"])),
-                    DataCell(Text(produto["idProd"])),
+                    DataCell(Text(produto["nome"])),
                     DataCell(Text(produto["quantidade"])),
                     DataCell(Text(produto["idFornecedor"])),
                     DataCell(Text(produto["idFunc"])),
