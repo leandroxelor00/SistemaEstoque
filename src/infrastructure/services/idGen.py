@@ -5,7 +5,10 @@ from json import JSONDecodeError
 class GeradorID:
 
     def __init__(self,path,atributo):
+<<<<<<< Updated upstream
         # self.path = fr"E:\Aulas\SistemaEstoque\src\infrastructure\database\{path}"
+=======
+>>>>>>> Stashed changes
         self.path = fr"C:\Users\rafael.smoralli\Documents\GitHub\SistemaEstoque\src\infrastructure\database\{path}"
         self.idGerado = None
         try:

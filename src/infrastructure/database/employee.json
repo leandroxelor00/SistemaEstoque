@@ -6,5 +6,28 @@
     {
         "idFunc": 1,
         "nome": "dan"
+<<<<<<< Updated upstream
+=======
+    },
+    {
+        "idFunc": 4,
+        "nome": "Marianinha"
+    },
+    {
+        "idFunc": 5,
+        "nome": ""
+    },
+    {
+        "idFunc": 6,
+        "nome": ""
+    },
+    {
+        "idFunc": 7,
+        "nome": "A"
+    },
+    {
+        "idFunc": 8,
+        "nome": "zé"
+>>>>>>> Stashed changes
     }
 ]

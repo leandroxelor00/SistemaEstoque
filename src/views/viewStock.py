@@ -1,61 +1,11 @@
 from flet import *
 
-<<<<<<< Updated upstream
-class ViewProduto(View):
-
-    def __init__(self):
-        super().__init__()
-        self.nomeProd=TextField(label="Nome",icon=Icons.PERSON,col=7)
-        self.marcaProd=TextField(label="Marca",icon=Icons.ADD_BOX,col=7)
-        self.valorProd=TextField(label="Valor",prefix="R$",col=3)
-        self.btnCadastrarProduto=Button("Add Prod",icon=CupertinoIcons.PLUS,col=3)
-        self.route = "/"
+from src.controlers.searchStockController import SearchStockController
+from src.controlers.stockController import StockController
 
 
-
-        self.tabelaProduto = DataTable(
-            columns=[
-                DataColumn(label=Text("IdProd")),
-                DataColumn(label=Text("Nome")),
-                DataColumn(label=Text("Marca")),
-                DataColumn(label=Text("Valor R$")),
-            ],
-            col=12
-        )
-
-    def build(self):
-        modalProduto=Container(
-            content=Column(
-                controls=[
-                    ResponsiveRow(controls=[self.nomeProd,self.valorProd], alignment=MainAxisAlignment.SPACE_AROUND),
-                    ResponsiveRow(controls=[self.marcaProd, self.btnCadastrarProduto], alignment=MainAxisAlignment.SPACE_AROUND)
-                ]
-            ),border=Border.all(2,"Black"),height=150,padding=15,
-            col=12
-        )
-
-        modalTabela=Container(
-            content=ResponsiveRow(controls=[self.tabelaProduto],alignment=MainAxisAlignment.SPACE_BETWEEN),
-            padding=Padding(10,20,10,20),
-            border=Border.all(2, "Black"),
-        )
-
-        self.controls=[Column(
-            controls=[modalProduto,modalTabela]
-
-                    )
-            ]
-
-        return self.controls
-
-
-=======
-from src.controlers.searchProductController import SearchProductController
-from src.controlers.productController import ProdutoController
-
-
-class ViewProduct:
-    # View principal dos produtos
+class ViewStock:
+    # View principal do estoque
 
     def __init__(self, page):
         self.page = page
@@ -68,31 +18,31 @@ class ViewProduct:
             animate=Animation(300, "ease"),
         )
 
-    def show_cadastro(self):
+    def showCadastro(self):
 
-        from src.views.viewRegProduct import ViewRegProduto
+        from src.views.viewRegStock import ViewRegStock
 
         if not self.cadastro_view:
-            self.cadastro_view = ViewRegProduto()
-            ProdutoController(self.page, self.cadastro_view)
+            self.cadastro_view = ViewRegStock()
+            StockController(self.page, self.cadastro_view)
 
         self.sub_content.content = self.cadastro_view.build()
         self.page.update()
 
-    def show_consulta(self):
+    def showConsulta(self):
 
-        from src.views.viewShowProduct import ViewShowProduct
+        from src.views.viewShowStock import ViewShowStock
 
         if not self.consulta_view:
-            self.consulta_view = ViewShowProduct()
-            SearchProductController(self.page, self.consulta_view)
+            self.consulta_view = ViewShowStock()
+            SearchStockController(self.page, self.consulta_view)
 
         self.sub_content.content = self.consulta_view.build()
         self.page.update()
 
     def build(self):
 
-        self.show_cadastro()
+        self.showCadastro()
 
         return Container(
             expand=True,
@@ -118,14 +68,14 @@ class ViewProduct:
                             controls=[
 
                                 Text(
-                                    "Produtos",
+                                    "Estoque",
                                     size=28,
                                     weight="bold",
                                     color="white",
                                 ),
 
                                 Text(
-                                    "Gerencie os produtos cadastrados no sistema.",
+                                    "Gerencie os produtos disponíveis no estoque.",
                                     size=14,
                                     color="#94A3B8",
                                 ),
@@ -136,8 +86,8 @@ class ViewProduct:
                                     controls=[
 
                                         ElevatedButton(
-                                            "Cadastrar Produto",
-                                            icon=Icons.ADD_BOX_OUTLINED,
+                                            "Cadastrar no Estoque",
+                                            icon=Icons.INVENTORY_2_OUTLINED,
 
                                             bgcolor="#2563EB",
                                             color="white",
@@ -149,11 +99,11 @@ class ViewProduct:
                                                 ),
                                             ),
 
-                                            on_click=lambda e: self.show_cadastro(),
+                                            on_click=lambda e: self.showCadastro(),
                                         ),
 
                                         ElevatedButton(
-                                            "Consultar Produtos",
+                                            "Consultar Estoque",
                                             icon=Icons.SEARCH,
 
                                             bgcolor="#1E293B",
@@ -166,7 +116,7 @@ class ViewProduct:
                                                 ),
                                             ),
 
-                                            on_click=lambda e: self.show_consulta(),
+                                            on_click=lambda e: self.showConsulta(),
                                         ),
                                     ],
                                 ),
@@ -187,4 +137,3 @@ class ViewProduct:
                 ],
             ),
         )
->>>>>>> Stashed changes

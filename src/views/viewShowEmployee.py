@@ -3,15 +3,9 @@ from flet import ResponsiveRow, Column, Container, View, Button, TextField, Data
     Padding, Border, MainAxisAlignment, Text, ElevatedButton, ButtonStyle, RoundedRectangleBorder
 
 
-class ViewSearchMovement(View):
+class ViewShowEmployee:
 
     def __init__(self):
-<<<<<<< Updated upstream:src/views/viewSearchMovement.py
-        super().__init__()
-        self.searchBar = TextField(label="Pesquisar por ID",col=7)
-        self.btnSearch=Button("Procurar", col=3)
-        self.route = ("/search")
-=======
 
         self.searchBar = TextField(
             label="Pesquisar por ID",
@@ -40,17 +34,12 @@ class ViewSearchMovement(View):
                 shape=RoundedRectangleBorder(radius=12),
             ),
         )
-        self.route = ("/searchstock")
->>>>>>> Stashed changes:src/views/viewShowStock.py
+        self.route = ("/searchemployee")
 
-        self.tabelaProduto = DataTable(
+        self.tabelaFuncs = DataTable(
             columns=[
-                DataColumn(label=Text("IdMovimento")),
-                DataColumn(label=Text("IdProd")),
-                DataColumn(label=Text("Quantidade")),
-                DataColumn(label=Text("Fornecedor")),
-                DataColumn(label=Text("Funcionario")),
-                DataColumn(label=Text("Tipo")),
+                DataColumn(label=Text("IdFunc")),
+                DataColumn(label=Text("Nome")),
             ],
             col=12
         )
@@ -63,14 +52,12 @@ class ViewSearchMovement(View):
         )
 
         modalTabela = Container(
-            content=ResponsiveRow(controls=[self.tabelaProduto], alignment=MainAxisAlignment.SPACE_BETWEEN),
+            content=ResponsiveRow(controls=[self.tabelaFuncs], alignment=MainAxisAlignment.SPACE_BETWEEN),
             padding=Padding(10, 20, 10, 20),
         )
 
-        self.controls = [Column(
+        return Column(
             controls=[modalBarra,modalTabela]
 
             )
-        ]
 
-        return self.controls

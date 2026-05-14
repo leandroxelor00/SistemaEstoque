@@ -118,5 +118,11 @@
         "nome": "ccaa",
         "marca": "aa",
         "valor": ""
+    },
+    {
+        "idProd": 21,
+        "nome": "Jaqueta",
+        "marca": "Maike",
+        "valor": "10"
     }
 ]

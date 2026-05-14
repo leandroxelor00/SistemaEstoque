@@ -1,61 +1,11 @@
 from flet import *
 
-<<<<<<< Updated upstream
-class ViewProduto(View):
-
-    def __init__(self):
-        super().__init__()
-        self.nomeProd=TextField(label="Nome",icon=Icons.PERSON,col=7)
-        self.marcaProd=TextField(label="Marca",icon=Icons.ADD_BOX,col=7)
-        self.valorProd=TextField(label="Valor",prefix="R$",col=3)
-        self.btnCadastrarProduto=Button("Add Prod",icon=CupertinoIcons.PLUS,col=3)
-        self.route = "/"
+from src.controlers.searchSupplierController import SearchSupplierController
+from src.controlers.supplierController import SupplierController
 
 
-
-        self.tabelaProduto = DataTable(
-            columns=[
-                DataColumn(label=Text("IdProd")),
-                DataColumn(label=Text("Nome")),
-                DataColumn(label=Text("Marca")),
-                DataColumn(label=Text("Valor R$")),
-            ],
-            col=12
-        )
-
-    def build(self):
-        modalProduto=Container(
-            content=Column(
-                controls=[
-                    ResponsiveRow(controls=[self.nomeProd,self.valorProd], alignment=MainAxisAlignment.SPACE_AROUND),
-                    ResponsiveRow(controls=[self.marcaProd, self.btnCadastrarProduto], alignment=MainAxisAlignment.SPACE_AROUND)
-                ]
-            ),border=Border.all(2,"Black"),height=150,padding=15,
-            col=12
-        )
-
-        modalTabela=Container(
-            content=ResponsiveRow(controls=[self.tabelaProduto],alignment=MainAxisAlignment.SPACE_BETWEEN),
-            padding=Padding(10,20,10,20),
-            border=Border.all(2, "Black"),
-        )
-
-        self.controls=[Column(
-            controls=[modalProduto,modalTabela]
-
-                    )
-            ]
-
-        return self.controls
-
-
-=======
-from src.controlers.searchProductController import SearchProductController
-from src.controlers.productController import ProdutoController
-
-
-class ViewProduct:
-    # View principal dos produtos
+class ViewSupplier:
+    # View principal dos fornecedores
 
     def __init__(self, page):
         self.page = page
@@ -70,22 +20,22 @@ class ViewProduct:
 
     def show_cadastro(self):
 
-        from src.views.viewRegProduct import ViewRegProduto
+        from src.views.viewRegSupplier import ViewRegSupplier
 
         if not self.cadastro_view:
-            self.cadastro_view = ViewRegProduto()
-            ProdutoController(self.page, self.cadastro_view)
+            self.cadastro_view = ViewRegSupplier()
+            SupplierController(self.page, self.cadastro_view)
 
         self.sub_content.content = self.cadastro_view.build()
         self.page.update()
 
     def show_consulta(self):
 
-        from src.views.viewShowProduct import ViewShowProduct
+        from src.views.viewShowSupplier import ViewShowSupplier
 
         if not self.consulta_view:
-            self.consulta_view = ViewShowProduct()
-            SearchProductController(self.page, self.consulta_view)
+            self.consulta_view = ViewShowSupplier()
+            SearchSupplierController(self.page, self.consulta_view)
 
         self.sub_content.content = self.consulta_view.build()
         self.page.update()
@@ -118,14 +68,14 @@ class ViewProduct:
                             controls=[
 
                                 Text(
-                                    "Produtos",
+                                    "Fornecedores",
                                     size=28,
                                     weight="bold",
                                     color="white",
                                 ),
 
                                 Text(
-                                    "Gerencie os produtos cadastrados no sistema.",
+                                    "Gerencie os fornecedores cadastrados.",
                                     size=14,
                                     color="#94A3B8",
                                 ),
@@ -136,8 +86,8 @@ class ViewProduct:
                                     controls=[
 
                                         ElevatedButton(
-                                            "Cadastrar Produto",
-                                            icon=Icons.ADD_BOX_OUTLINED,
+                                            "Cadastrar Fornecedor",
+                                            icon=Icons.LOCAL_SHIPPING_OUTLINED,
 
                                             bgcolor="#2563EB",
                                             color="white",
@@ -153,7 +103,7 @@ class ViewProduct:
                                         ),
 
                                         ElevatedButton(
-                                            "Consultar Produtos",
+                                            "Consultar Fornecedores",
                                             icon=Icons.SEARCH,
 
                                             bgcolor="#1E293B",
@@ -174,7 +124,6 @@ class ViewProduct:
                         ),
                     ),
 
-                    # CONTEÚDO
                     Container(
                         expand=True,
                         padding=20,
@@ -187,4 +136,3 @@ class ViewProduct:
                 ],
             ),
         )
->>>>>>> Stashed changes
