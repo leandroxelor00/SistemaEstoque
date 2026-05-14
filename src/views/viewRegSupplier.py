@@ -3,9 +3,35 @@ from flet import *
 class ViewRegSupplier:
 
     def __init__(self):
+        self.nome = TextField(
+            label="Nome",
+            icon=Icons.LOCAL_SHIPPING_OUTLINED,
+            col=8,
 
-        self.nome=TextField(label="Nome",icon=Icons.ADD_BOX,col=8)
-        self.btnCadastrarFornecedor=Button("Add Fornecedor",icon=CupertinoIcons.PLUS,col=3,margin=Margin.only(top=10))
+            bgcolor="#1E293B",
+            border_color="#334155",
+            focused_border_color="#2563EB",
+
+            color="white",
+            cursor_color="white",
+
+            border_radius=12,
+        )
+
+        self.btnCadastrarFornecedor = ElevatedButton(
+            "Add Fornecedor",
+            icon=Icons.ADD,
+
+            col=3,
+
+            bgcolor="#2563EB",
+            color="white",
+
+            style=ButtonStyle(
+                padding=20,
+                shape=RoundedRectangleBorder(radius=12),
+            ),
+        )
         self.route = "/supplier"
 
         self.tabelaFornecedor = DataTable(
@@ -22,18 +48,18 @@ class ViewRegSupplier:
                 controls=[
                     ResponsiveRow(controls=[self.nome, self.btnCadastrarFornecedor], alignment=MainAxisAlignment.SPACE_BETWEEN),
                 ]
-            ),border=Border.all(2,"Black"),height=80,padding=15,
+            ),
             col=12
         )
 
         modalTabela=Container(
             content=ResponsiveRow(controls=[self.tabelaFornecedor],alignment=MainAxisAlignment.SPACE_BETWEEN),
             padding=Padding(10,20,10,20),
-            border=Border.all(2, "Black"),
         )
 
         return Column(
-            controls=[modalFornecedor,modalTabela]
+            controls=[modalFornecedor,modalTabela],
+            scroll=ScrollMode.AUTO
 
                     )
 

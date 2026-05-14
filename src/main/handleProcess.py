@@ -1,17 +1,31 @@
 from flet import *
-
-from src.main.constructors.movementConstructor import movementConstructor
 from src.main.constructors.productConstructor import productConstructor
-from src.main.constructors.employeeConstructor import employeeConstructor
-from src.main.constructors.stockConstructor import stockConstructor
 from src.main.constructors.supplierConstructor import supplierConstructor
-
+from src.main.constructors.employeeConstructor import employeeConstructor   
+from src.main.constructors.stockConstructor import stockConstructor
+from src.main.constructors.movementConstructor import movementConstructor   
+#
+# def app(page:Page):
+#     page.title = "Cadastro de Edulto"
+#
+#     def changeRoute():
+#         page.views.clear()
+#         page.views.append(
+#             productConstructor(page)
+#         )
+#
+#         page.update()
+#
+#     page.on_route_change=changeRoute
+#     changeRoute()
 
 def main(page:Page):
     page.title = "Sistema de Estoque"
     page.theme_mode = ThemeMode.DARK
-
     container = Container(expand=True, padding=20,margin=Margin(0,0,25,0))
+    outroColor = "#111827"
+    container.bgcolor = outroColor
+    page.bgcolor = outroColor
 
     def changeContent(index):
         if index == 0:  # Home
@@ -42,8 +56,41 @@ def main(page:Page):
     # NavigationRail
     navigation = NavigationRail(
         selected_index=0,
+        bgcolor= outroColor,
         extended=True,
-        label_type=NavigationRailLabelType.ALL,
+        min_width=90,
+        min_extended_width=240,
+        group_alignment=-0.9,
+        indicator_color="#2563EB",
+        label_type=NavigationRailLabelType.NONE,
+
+        leading=Container(
+            padding=20,
+
+            content=Column(
+                tight=True,
+                controls=[
+                    Icon(
+                        Icons.INVENTORY_2,
+                        size=42,
+                        color="#3B82F6",
+                    ),
+
+                    Text(
+                        "StockPro",
+                        size=24,
+                        weight=FontWeight.BOLD,
+                        color="white",
+                    ),
+
+                    Text(
+                        "Controle de Estoque",
+                        size=12,
+                        color="#94A3B8",
+                    ),
+                ],
+            ),
+        ),
         destinations=[
             NavigationRailDestination(
                 icon=Icons.HOME_OUTLINED,
@@ -52,23 +99,27 @@ def main(page:Page):
             ),
             NavigationRailDestination(
                 icon=Icons.INVENTORY_2_OUTLINED,
-                selected_icon=Icons.INVENTORY_2,
+                selected_icon=Icon(Icons.INVENTORY_2),
                 label="Produtos",
             ),
             NavigationRailDestination(
-                icon=Icons.CIRCLE_OUTLINED,
-                label="Fornecedores"
+                icon=Icons.LOCAL_SHIPPING_OUTLINED,
+                selected_icon=Icon(Icons.LOCAL_SHIPPING),
+                label="Fornecedores",
             ),
             NavigationRailDestination(
-                icon=Icons.CIRCLE_OUTLINED,
-                label="Funcionários"
+                icon=Icons.GROUP_OUTLINED,
+                selected_icon=Icon(Icons.GROUP),
+                label="Funcionários",
             ),
             NavigationRailDestination(
-                icon=Icons.CIRCLE_OUTLINED,
+                icon=Icons.INVENTORY_2_OUTLINED,
+                selected_icon=Icon(Icons.INVENTORY,),
                 label="Estoque"
             ),
             NavigationRailDestination(
-                icon=Icons.CIRCLE_OUTLINED,
+                icon=Icons.COMPARE_ARROWS_OUTLINED,
+                selected_icon=Icon(Icons.COMPARE_ARROWS),
                 label="Movimentos"
             ),
         ],
@@ -82,7 +133,7 @@ def main(page:Page):
                 VerticalDivider(width=50),
                 container,
             ],
-        expand=True,
+            expand=True,
         )
     )
 

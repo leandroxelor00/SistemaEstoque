@@ -4,8 +4,8 @@ from json import JSONDecodeError
 class BaseDB:
 
     def __init__(self,fileDB:str):
-        # self.__path = fr"E:\Aulas\SistemaEstoque\src\infrastructure\database\{fileDB}"
-        self.__path = fr"C:\Users\leandro.ccmata\Documents\GitHub\SistemaEstoque\src\infrastructure\database\{fileDB}"
+        self.__path = fr"E:\Aulas\SistemaEstoque\src\infrastructure\database\{fileDB}"
+        # self.__path = fr"C:\Users\leandro.ccmata\Documents\GitHub\SistemaEstoque\src\infrastructure\database\{fileDB}"
         self.__fileDB = fileDB
 
     def listData(self):
