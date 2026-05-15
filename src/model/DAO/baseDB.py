@@ -1,38 +1,39 @@
 import json
 from json import JSONDecodeError
+from src.infrastructure.services.pathDB import PathDB
+
 
 class BaseDB:
 
-    def __init__(self,fileDB:str):
-        self.__path = fr"E:\Aulas\SistemaEstoque\src\infrastructure\database\{fileDB}"
-        # self.__path = fr"C:\Users\leandro.ccmata\Documents\GitHub\SistemaEstoque\src\infrastructure\database\{fileDB}"
-        self.__fileDB = fileDB
+    def __init__(self, file_db: str):
 
-    def listData(self):
+        self.__path = fr"{PathDB().path}\{file_db}"
+        print("testando", self.__path)
+        self.__file_db = file_db
+
+    def listData(self) -> list:
         try:
-            with open(self.__path,"r+", encoding="utf-8") as file:
+            with open(self.__path, "r+", encoding="utf-8") as file:
                 return json.load(file)
         except JSONDecodeError:
             return []
         except:
-            raise ValueError("Erro ao abrir o arquivo: ",self.__fileDB)
+            raise ValueError("Erro ao abrir o arquivo:", self.__file_db)
 
-
-    def save(self,data):
-        listDB = self.listData()
-        try:
-            with open(self.__path,"w",encoding="utf-8") as file:
-                listDB.append(data)
-                json.dump(listDB,file,indent=4,ensure_ascii=False)
-                print("Salvo com susseeço")
-        except:
-            raise print("Erro ao salvar no arquivo: ", self.__fileDB)
-
-
-    def saveList(self, data):
+    def save(self, data):
+        list_data_base = self.listData()
         try:
             with open(self.__path, "w", encoding="utf-8") as file:
-                json.dump(data, file, indent=4, ensure_ascii=False)
-                print("Salvo com susseeço")
+                list_data_base.append(data)
+                json.dump(list_data_base, file, ensure_ascii=False, indent=4)
+                print("Salvo com sucesso no banco de dados!")
         except:
-            raise print("Erro ao salvar a lista do produto deletado: ", self.__fileDB)
+            raise ValueError("Erro ao salvar no arquivo:", self.__file_db)
+
+    def saveList(self, lista):
+        try:
+            with open(self.__path, "w", encoding="utf-8") as file:
+                json.dump(lista, file, ensure_ascii=False, indent=4)
+                print("Salvo com sucesso no banco de dados!")
+        except:
+            raise ValueError("Erro ao salvar a lista do paciente deletado:", self.__file_db)
