@@ -102,16 +102,17 @@ class ViewRegMovimento:
 
             col=4,
             width=100,
+            animate_scale=Animation(300, "easeOutBack"),
 
             disabled=True,
 
-            bgcolor="#2563EB",
+            bgcolor="#1E293B",
             color="white",
 
             style=ButtonStyle(
                 padding=20,
                 shape=RoundedRectangleBorder(radius=12),
-            ),
+            )
         )
         self.route = "/movement"
 

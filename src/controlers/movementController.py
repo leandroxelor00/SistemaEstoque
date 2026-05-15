@@ -38,10 +38,11 @@ class MovementController:
     def deixarBtnDisabled(self):
         if self.tela.tipo.value == "Entrada":
             if any(val == "" for val in [self.tela.idProd.value,self.tela.quantidade.value,self.tela.idFornecedor.value]):
-
+                self.tela.btnCadastrarMovimento.bgcolor = "#1E293B"
                 self.tela.btnCadastrarMovimento.disabled = True
             else:
                 self.tela.btnCadastrarMovimento.disabled = False
+                self.tela.btnCadastrarMovimento.bgcolor = "#2563EB"
 
         elif self.tela.tipo.value == "Saída":
             if any(val == "" for val in[self.tela.idProd.value, self.tela.quantidade.value, self.tela.idFuncionario.value]):

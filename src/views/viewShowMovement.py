@@ -62,7 +62,7 @@ class ViewShowMovement:
         self.tabelaMovimentos = DataTable(
             columns=[
                 DataColumn(label=Text("idMovimento")),
-                DataColumn(label=Text("nome")),
+                DataColumn(label=Text("Nome")),
                 DataColumn(label=Text("Quantidade")),
                 DataColumn(label=Text("idFornecedor")),
                 DataColumn(label=Text("idFuncionario")),
