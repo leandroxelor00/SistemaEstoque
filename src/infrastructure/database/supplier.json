@@ -1,0 +1,33 @@
+<<<<<<< Updated upstream
+=======
+[
+    {
+        "idFornecedor": 1,
+        "nome": "dan"
+    },
+    {
+        "idFornecedor": 2,
+        "nome": "Danila"
+    },
+    {
+        "idFornecedor": 3,
+        "nome": "Maria"
+    },
+    {
+        "idFornecedor": 4,
+        "nome": "aa"
+    },
+    {
+        "idFornecedor": 5,
+        "nome": "aa"
+    },
+    {
+        "idFornecedor": 6,
+        "nome": "aa"
+    },
+    {
+        "idFornecedor": 7,
+        "nome": ""
+    }
+]
+>>>>>>> Stashed changes

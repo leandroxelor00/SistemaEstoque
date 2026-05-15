@@ -1,21 +1,39 @@
 from flet import *
+<<<<<<< Updated upstream
 from src.main.constructors.productConstructor import produtoConstructor
+=======
+from src.main.constructors.productConstructor import productConstructor
+from src.main.constructors.supplierConstructor import supplierConstructor
+from src.main.constructors.employeeConstructor import employeeConstructor   
+from src.main.constructors.stockConstructor import stockConstructor
+from src.main.constructors.movementConstructor import movementConstructor   
+>>>>>>> Stashed changes
 
 def app(page:Page):
     page.title = "Cadastro de Edulto"
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     def changeRoute():
         page.views.clear()
         page.views.append(
             produtoConstructor(page)
+=======
+    def changeRoute():
+        page.views.clear()
+        page.views.append(
+            productConstructor(page)
+>>>>>>> Stashed changes
         )
 
         page.update()
 
     page.on_route_change=changeRoute
     changeRoute()
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 
 def main(page:Page):
     page.title = "Sistema de Estoque"

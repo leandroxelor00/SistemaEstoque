@@ -5,10 +5,14 @@ class BaseDB:
 
     def __init__(self,fileDB:str):
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         # self.__path = fr"E:\Aulas\SistemaEstoque\src\infrastructure\database\{fileDB}"
 =======
 >>>>>>> Stashed changes
         self.__path = fr"C:\Users\rafael.smoralli\Documents\GitHub\SistemaEstoque\src\infrastructure\database\{fileDB}"
+=======
+        self.__path = fr"C:\Users\rafael.smoralli\Downloads\SistemaEstoque.zip\SistemaEstoque\SistemaEstoque\src\infrastructure\database\{fileDB}"
+>>>>>>> Stashed changes
         self.__fileDB = fileDB
 
     def listData(self):

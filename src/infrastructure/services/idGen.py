@@ -6,10 +6,14 @@ class GeradorID:
 
     def __init__(self,path,atributo):
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         # self.path = fr"E:\Aulas\SistemaEstoque\src\infrastructure\database\{path}"
 =======
 >>>>>>> Stashed changes
         self.path = fr"C:\Users\rafael.smoralli\Documents\GitHub\SistemaEstoque\src\infrastructure\database\{path}"
+=======
+        self.path = fr"C:\Users\rafael.smoralli\Downloads\SistemaEstoque.zip\SistemaEstoque\SistemaEstoque\src\infrastructure\database\{path}"
+>>>>>>> Stashed changes
         self.idGerado = None
         try:
             with open(self.path,"r",encoding="utf-8") as file:
